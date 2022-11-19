@@ -77,7 +77,7 @@ static internal class MessengerInternal
         var d = eventTable[eventType];
         if (d != null && d.GetType() != listenerBeingAdded.GetType())
         {
-            throw new ListenerException(string.Format("Attempting to add listener with inconsistent signature for event type {0}. Current listeners have type {1} and listener being added has type {2}", eventType, d.GetType().Name, listenerBeingAdded.GetType().Name));
+            throw new ListenerException(string.Format("ѕопытка добавить прослушиватель с несогласованной подписью дл€ типа событи€ {0}. “екущие слушатели имеют тип {1}, а добавл€емый слушатель имеет тип {2}", eventType, d.GetType().Name, listenerBeingAdded.GetType().Name));
         }
     }
 
@@ -89,16 +89,16 @@ static internal class MessengerInternal
 
             if (d == null)
             {
-                throw new ListenerException(string.Format("Attempting to remove listener with for event type {0} but current listener is null.", eventType));
+                throw new ListenerException(string.Format("ѕопытка удалить прослушиватель с типом событи€ for {0}, но текущий прослушиватель равен null.", eventType));
             }
             else if (d.GetType() != listenerBeingRemoved.GetType())
             {
-                throw new ListenerException(string.Format("Attempting to remove listener with inconsistent signature for event type {0}. Current listeners have type {1} and listener being removed has type {2}", eventType, d.GetType().Name, listenerBeingRemoved.GetType().Name));
+                throw new ListenerException(string.Format("ѕопытка удалить прослушиватель с несогласованной подписью дл€ типа событи€ {0}. “екущие слушатели имеют тип {1}, а удал€емый слушатель имеет тип {2}", eventType, d.GetType().Name, listenerBeingRemoved.GetType().Name));
             }
         }
         else
         {
-            throw new ListenerException(string.Format("Attempting to remove listener for type {0} but Messenger doesn't know about this event type.", eventType));
+            throw new ListenerException(string.Format("ѕопытка удалить прослушиватель дл€ типа {0}, но Messenger не знает об этом типе событи€.", eventType));
         }
     }
 
@@ -114,13 +114,13 @@ static internal class MessengerInternal
     {
         if (mode == MessengerMode.REQUIRE_LISTENER && !eventTable.ContainsKey(eventType))
         {
-            throw new MessengerInternal.BroadcastException(string.Format("Broadcasting message {0} but no listener found.", eventType));
+            throw new MessengerInternal.BroadcastException(string.Format("Ўироковещательное сообщение {0}, но слушатель не найден.", eventType));
         }
     }
 
     static public BroadcastException CreateBroadcastSignatureException(string eventType)
     {
-        return new BroadcastException(string.Format("Broadcasting message {0} but listeners have a different signature than the broadcaster.", eventType));
+        return new BroadcastException(string.Format("Ўироковещательное сообщение {0}, но у слушателей подпись отличаетс€ от подписи вещател€.", eventType));
     }
 
     public class BroadcastException : Exception
