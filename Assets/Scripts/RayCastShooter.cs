@@ -43,6 +43,8 @@ public class RayCastShooter : MonoBehaviour
                 {
                    // Debug.Log("Target hit");
                    target.ReactToHit();//вызываем метод для мишени вместо генерации отладочного сообщения
+                   //добавляем рассылку сообщений как реакцию на попадание
+                   Messenger.Broadcast(GameEvent.ENEMY_HIT);
                 }
                 else
                 {
