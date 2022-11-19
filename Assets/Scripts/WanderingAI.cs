@@ -11,8 +11,26 @@ public class WanderingAI : MonoBehaviour
     public float speed = 3.0f;//скорости движения врага
     public float obstacleRange=5.0f;//расстояния, на котором враг начинает реагировать на препятствие
 
+    public const float baseSpeed = 3.0f;//базовая скорость. которая регулируется  положением ползунка слайдера
+
     [SerializeField] private GameObject fireBallPrefab;
     private GameObject _fireBall;
+
+    void Awake()
+    {
+        Messenger<float>.AddListener(GameEvent.SPEED_CHANGE, OnSpeedChanged);
+    }
+
+    void Destroy()
+    {
+        Messenger<float>.RemoveListener(GameEvent.SPEED_CHANGE, OnSpeedChanged);
+    }
+
+    //метод, объявленный в подписчике для события SPEED_CHANGE
+    private void OnSpeedChanged(float value)
+    {
+        speed = baseSpeed * value;
+    }
 
     void Start()
     {
