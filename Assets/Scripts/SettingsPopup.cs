@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class SettingsPopup : MonoBehaviour
 {
-//    [SerializeField] private Slider speedSlider;
+    [SerializeField] private Slider _speedSlider;
 
-//    void Start()
-//    {
-//        speedSlider.value = PlayerPrefs.GetFloat("speed", 1);
-//    }
+    void Start()
+    {
+        _speedSlider.value = PlayerPrefs.GetFloat("speed", 1);
+    }
     public void Open()
     {
         gameObject.SetActive(true);//активируем объект, чтобы открыть окно
