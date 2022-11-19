@@ -25,9 +25,10 @@ public class SettingsPopup : MonoBehaviour
     {
         Debug.Log(name);
     }
-
+    //–ассылка сообщени€ сценарием SettingsPopup
     public void OnSpeedValue(float speed)
     {
-        Debug.Log($"Speed: {speed}");
+        //Debug.Log($"Speed: {speed}");
+        Messenger<float>.Broadcast(GameEvent.SPEED_CHANGE,speed);//значение , заданное положением ползунка в слайдере, рассылаетс€ как событие float
     }
 }
