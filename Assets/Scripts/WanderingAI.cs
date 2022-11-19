@@ -21,7 +21,7 @@ public class WanderingAI : MonoBehaviour
         Messenger<float>.AddListener(GameEvent.SPEED_CHANGE, OnSpeedChanged);
     }
 
-    void Destroy()
+    void OnDestroy()
     {
         Messenger<float>.RemoveListener(GameEvent.SPEED_CHANGE, OnSpeedChanged);
     }
