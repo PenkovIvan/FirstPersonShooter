@@ -9,7 +9,7 @@ public class SettingsPopup : MonoBehaviour
 
     void Start()
     {
-        _speedSlider.value = PlayerPrefs.GetFloat("speed", 1);
+        //_speedSlider.value = PlayerPrefs.GetFloat("speed", 1);
     }
     public void Open()
     {
